@@ -11,7 +11,8 @@ class PdfViewerController {
         googleDocInstance.save(flush: true)
 
         String googleDocUrl = "http://docs.google.com/viewer?embedded=true&url="
-        String url = googleDocUrl + "pdfViewer/viewPdf/" + googleDocInstance.uniqueId
+        String absoluteUrl = "http://qa3.intelligrape.net:12345/samplePdfViewer/"
+        String url = googleDocUrl + absoluteUrl + "pdfViewer/viewPdf/" + googleDocInstance.uniqueId
         redirect(url: url)
     }
 

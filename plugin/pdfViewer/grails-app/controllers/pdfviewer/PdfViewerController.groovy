@@ -15,9 +15,9 @@ class PdfViewerController {
         redirect(url: url)
     }
 
-    def viewPdf = {
+    def viewPdf = {        
         GoogleDocPdf googleDocPdf = GoogleDocPdf.findByUniqueId(params.uniqueId)
-        try{
+
         File file = new File(googleDocPdf.path)
             String name = googleDocPdf.path.replaceAll(" ", "_")
             response.setHeader("Content-disposition", "attachment; filename="+name)
@@ -27,9 +27,6 @@ class PdfViewerController {
             out.write(file.readBytes());
             out.flush()
             out.close();
-        }catch(Exception e){
-            e.printStackTrace()
-        }
 
         if(googleDocPdf){
             googleDocPdf.delete(flush:true)

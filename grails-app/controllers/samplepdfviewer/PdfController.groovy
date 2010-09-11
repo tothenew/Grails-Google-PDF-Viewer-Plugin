@@ -37,7 +37,7 @@ class PdfController {
     }
 
     def show = {
-        def pdfInstance = Pdf.get(params.uniqueId)
+        def pdfInstance = Pdf.get(params.id)
         if (!pdfInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'pdf.label', default: 'Pdf'), params.uniqueId])}"
             redirect(action: "list")
